@@ -11,35 +11,35 @@ all: test lint
 # Test target to run tests
 .PHONY: test
 test:
-    $(TEST_CMD) --reporter spec
+	$(TEST_CMD) --reporter spec
 
 # Lint target to run ESLint
 .PHONY: lint
 lint:
-    $(LINT_CMD) .
+	$(LINT_CMD) .
 
 # Prettify target to format code
 .PHONY: prettify
 prettify:
-    $(PRETTIFY_CMD) --write '**/*.js'
+	$(PRETTIFY_CMD) --write '**/*.js'
 
 # Build target (can be customized as needed)
 .PHONY: build
 build:
-    @echo "Building project..."
+	@echo "Building project..."
 
 # Code review target
 .PHONY: review
 review: lint test
-    @echo "Code review complete. Linting and tests passed!"
+	@echo "Code review complete. Linting and tests passed!"
 
 # Clean target to remove any generated files
 .PHONY: clean
 clean:
-    rm -rf node_modules
+	rm -rf node_modules
 
 .PHONY: start
 
 # Start target (runs the Node.js application)
 start:
-    npm start
+	npm start
