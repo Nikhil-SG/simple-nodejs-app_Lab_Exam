@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: simple-nodejs-app
-        image: bacdocker/nodejswebappexam:v1  # Update with the correct image name and tag
+        image: bacdocker/nodejswebappexam:v1  
         ports:
         - containerPort: 3000
