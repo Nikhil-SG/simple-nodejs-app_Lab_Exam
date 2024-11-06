@@ -1,41 +1,45 @@
-# Makefile for simple-nodejs-app
+# Define variables for common commands
+NODE_MODULES = node_modules/.bin
+TEST_CMD = $(NODE_MODULES)/mocha
+LINT_CMD = $(NODE_MODULES)/eslint
+PRETTIFY_CMD = $(NODE_MODULES)/prettier
 
-# Define variables
-APP_NAME = simple-nodejs-app
-PORT = 3000
+# Default target
+.PHONY: all
+all: test lint
 
-# Commands
-install:
-	@echo "Installing dependencies..."
-	npm install
-
-start:
-	@echo "Starting the application..."
-	npm start
-
-stop:
-	@echo "Stopping the application..."
-	@pkill -f "node.*$(APP_NAME)" || true
-
-lint:
-	@echo "Running linter..."
-	npm run lint
-
+# Test target to run tests
+.PHONY: test
 test:
-	@echo "Running tests..."
-	npm test
+    $(TEST_CMD) --reporter spec
 
+# Lint target to run ESLint
+.PHONY: lint
+lint:
+    $(LINT_CMD) .
+
+# Prettify target to format code
+.PHONY: prettify
+prettify:
+    $(PRETTIFY_CMD) --write '**/*.js'
+
+# Build target (can be customized as needed)
+.PHONY: build
 build:
-	@echo "Building the application..."
-	npm run build
+    @echo "Building project..."
 
+# Code review target
+.PHONY: review
+review: lint test
+    @echo "Code review complete. Linting and tests passed!"
+
+# Clean target to remove any generated files
+.PHONY: clean
 clean:
-	@echo "Cleaning up..."
-	@rm -rf node_modules
-	@rm -rf dist
+    rm -rf node_modules
 
-# Combined commands
-restart: stop start
+.PHONY: start
 
-# Default command
-.PHONY: install start stop lint test build clean restart
+# Start target (runs the Node.js application)
+start:
+    npm start
