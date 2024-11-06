@@ -1,33 +1,29 @@
 {
-  "name": "simple-nodejs-app",
+  "name": "simple-nodejs-app_Lab_Exam",
   "version": "1.0.0",
-  "description": "Research about a person",
+  "description": "A simple Node.js application for the lab exam.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "test": "mocha --reporter spec",  // Test script using Mocha (you can replace with your testing framework)
+    "lint": "eslint .",               // Linting script for code quality (you must install ESLint)
+    "start": "node index.js",         // Start script to run the application
+    "review": "npm run lint && npm test", // Code review script to lint and run tests
+    "build": "echo 'Building project...'",  // Sample build script (customize as necessary)
+    "prettify": "prettier --write '**/*.js'"  // Prettier code formatting (optional)
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rat9615/simple-nodejs-app.git"
-  },
-  "author": "Rohan R",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rat9615/simple-nodejs-app/issues"
-  },
-  "homepage": "https://github.com/rat9615/simple-nodejs-app#readme",
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "ejs": "^3.1.7",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.7",
-    "nodemon": "^2.0.3",
-    "request": "^2.88.2",
-    "wiki-infobox-parser": "^0.1.11"
+    "express": "^4.18.1",      // Add your project dependencies here
+    "mongoose": "^5.10.9"      // Example dependency, add others if needed
   },
   "devDependencies": {
-    "eslint": "^8.0.0"
+    "mocha": "^9.1.3",         // Mocha for testing
+    "eslint": "^8.0.0",        // ESLint for linting
+    "prettier": "^2.5.1",      // Prettier for code formatting (optional)
+    "chai": "^4.3.4"           // Chai for assertions in tests
+  },
+  "engines": {
+    "node": ">=14.0.0"          // Minimum Node.js version required
   }
 }
