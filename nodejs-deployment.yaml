@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: simple-nodejs-app
-        image: bacdocker/nodejswebappexam:v1  
+        image: sgnikhil/simple_nodesjs:v1  
         ports:
         - containerPort: 3000
